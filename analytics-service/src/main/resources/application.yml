@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: analytics-service
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/analytics}
+      database: analytics
+
+server:
+  port: 8083
+
+grpc:
+  server:
+    port: 50053
+
+logging:
+  level:
+    com.orion.platform: INFO

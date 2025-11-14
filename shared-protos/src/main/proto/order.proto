@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.orion.platform.grpc.order";
+option java_outer_classname = "OrderProto";
+
+package order;
+
+service OrderService {
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+  rpc GetOrder(GetOrderRequest) returns (GetOrderResponse);
+}
+
+message CreateOrderRequest {
+  string customer_id = 1;
+  repeated OrderItemRequest items = 2;
+}
+
+message OrderItemRequest {
+  string sku = 1;
+  int32 quantity = 2;
+  double price = 3;
+}
+
+message CreateOrderResponse {
+  string order_id = 1;
+  string status = 2;
+  double total_amount = 3;
+  int64 created_at = 4;
+}
+
+message GetOrderRequest {
+  string order_id = 1;
+}
+
+message GetOrderResponse {
+  string order_id = 1;
+  string customer_id = 2;
+  string status = 3;
+  double total_amount = 4;
+  int64 created_at = 5;
+  repeated OrderItem items = 6;
+}
+
+message OrderItem {
+  string sku = 1;
+  int32 quantity = 2;
+  double price = 3;
+}

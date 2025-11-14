@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: api-gateway-service
+
+server:
+  port: 8080
+
+grpc:
+  order:
+    host: ${ORDER_SERVICE_HOST:localhost}
+    port: ${ORDER_SERVICE_PORT:50051}
+  inventory:
+    host: ${INVENTORY_SERVICE_HOST:localhost}
+    port: ${INVENTORY_SERVICE_PORT:50052}
+  analytics:
+    host: ${ANALYTICS_SERVICE_HOST:localhost}
+    port: ${ANALYTICS_SERVICE_PORT:50053}
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    com.orion.platform: INFO
